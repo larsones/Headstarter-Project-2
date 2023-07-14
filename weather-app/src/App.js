@@ -1,5 +1,5 @@
 import './App.css';
-import Search from '.weather-app/components/search/search';
+import Search from './components/search/search.js';
 
 function App() {
 
