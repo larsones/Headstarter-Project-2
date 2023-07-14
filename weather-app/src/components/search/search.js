@@ -1,4 +1,4 @@
-import {AsyncPaginate } from "react-select-asynch-paginate";
+import {AsyncPaginate } from "react-select-async-paginate";
 
 const Search = (onSearchChange) => {
 
