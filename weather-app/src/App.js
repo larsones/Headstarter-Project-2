@@ -2,7 +2,7 @@ import "./App.css";
 import Search from "./components/search/search.js";
 import { useState } from "react";
 import axios from "axios";
-import WeatherCard from "./components/WeatherCard";
+import WeatherCard from "./components/weather-card";
 
 function App() {
   const [weatherData, setWeatherData] = useState(null);
