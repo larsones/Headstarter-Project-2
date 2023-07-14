@@ -7,7 +7,7 @@ function App() {
       console.log(searchData);
   }
   
-  return(
+  return ( 
     <div className="container">
     <Search onSearchChange={handleOnSearchChange} />
     </div>
