@@ -1,0 +1,53 @@
+import { WiDaySunny, WiCloudy, WiRain, WiSnow, WiThunderstorm } from "react-icons/wi";
+
+const WeatherCard = ({ weatherData }) => {
+  // Extract necessary information from weatherData and render it here
+  const dailyWeather = weatherData.list.slice(0, 7); // Get weather data for the next 7 days
+
+  const getWeatherIcon = (weatherCode) => {
+    // Map weather codes to corresponding icons
+    switch (weatherCode) {
+      case "01d":
+        return <WiDaySunny />;
+      case "01n":
+        return <WiDaySunny />;
+      case "02d":
+      case "02n":
+        return <WiCloudy />;
+      case "03d":
+      case "03n":
+      case "04d":
+      case "04n":
+        return <WiCloudy />;
+      case "09d":
+      case "09n":
+      case "10d":
+      case "10n":
+        return <WiRain />;
+      case "11d":
+      case "11n":
+        return <WiThunderstorm />;
+      case "13d":
+      case "13n":
+        return <WiSnow />;
+      default:
+        return null;
+    }
+  };
+
+  return (
+    <div>
+      {dailyWeather.map((day) => (
+        <div key={day.dt}>
+          <div>Date: {new Date(day.dt * 1000).toLocaleDateString()}</div>
+          <div>Temperature: {Math.round(day.main.temp)}°C</div>
+          <div>
+            Weather: {day.weather[0].main} {getWeatherIcon(day.weather[0].icon)}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+export default WeatherCard;
