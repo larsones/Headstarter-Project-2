@@ -1,11 +1,16 @@
-export const geoApiOptions = {
-  method: "GET",
-  headers: {
-    "X-RapidAPI-Key": "esGbwrm390mshS2BCl0RALxQRtZTp1W7sFMjsnyJlJzDXVkW0H",
-    "X-RapidAPI-Host": "wft-geo-db.p.rapidapi.com",
-  },
+const url = 'https://wft-geo-db.p.rapidapi.com/v1/geo/adminDivisions';
+const options = {
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': '71a0752e28msh084cebbe004a0aep180adejsndcc331acc048',
+		'X-RapidAPI-Host': 'wft-geo-db.p.rapidapi.com'
+	}
 };
-export const GEO_API_URL = "https://wft-geo-db.p.rapidapi.com/v1/geo";
 
-export const WEATHER_API_URL = "https://api.openweathermap.org/data/2.5";
-export const WEATHER_API_KEY = "9ad1336a393d8da13d0d523979ee1570";
+try {
+	const response = await fetch(url, options);
+	const result = await response.text();
+	console.log(result);
+} catch (error) {
+	console.error(error);
+}
