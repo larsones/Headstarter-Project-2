@@ -1,12 +1,27 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import SearchBar from './SearchBar';
+import WeatherWidget from './WeatherWidget';
+import HourlyForecast from './HourlyForecast';
+import WeeklyForecast from './WeeklyForecast';
+import AirQuality from './AirQuality';
 import './App.css';
 
-function App() {
+const App = () => {
+  const [city, setCity] = useState('');
+
+  const handleCitySearch = (cityName) => {
+    setCity(cityName);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>Weather App</h1>
-      </header>
+      <SearchBar onCitySearch={handleCitySearch} />
+      <div className="widgets">
+        <WeatherWidget city={city} />
+        <HourlyForecast city={city} />
+        <WeeklyForecast city={city} />
+        <AirQuality city={city} />
+      </div>
     </div>
   );
 }
