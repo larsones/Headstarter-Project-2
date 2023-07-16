@@ -1,9 +1,14 @@
+*{
+  margin: 0;
+  padding: 0;
+ }
 .App {
   background-image: url(C:\Users\elars\OneDrive\Documents\GitHub\Headstarter-Project-2\weather-app\src\Img\WeatherCloudy.jpg);
-  min-height: 100%;
-  background-position: center;
+  background-position: 0%;
+  min-height: 100vh;
+
   background-repeat: no-repeat;
-  background-size:100%;
+  background-size:120%;
   scale: 1;
 }
 
@@ -29,10 +34,7 @@
 .search{
   padding-left: 40%;
 }
-.background{
-  background-image: url(https://www.onlygfx.com/wp-content/uploads/2021/07/cartoon-cloud-sky-background-1-cover.jpg);
-  background-size: cover;
-}
+
 
 input[type='text'] {
   margin-right: 10px;
