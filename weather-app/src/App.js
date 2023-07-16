@@ -15,7 +15,9 @@ const App = () => {
 
   return (
     <div className="App">
-      <SearchBar onCitySearch={handleCitySearch} />
+      
+      <h1 className='text'>Welcome!  Please Enter a Location to get current news and weather.</h1>
+      <SearchBar onCitySearch={handleCitySearch} className='search'/>
       <div className="widgets">
         <WeatherWidget city={city} />
         <HourlyForecast city={city} />

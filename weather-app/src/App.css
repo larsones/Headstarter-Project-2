@@ -1,5 +1,10 @@
 .App {
-  padding: 20px;
+  background-image: url(C:\Users\elars\OneDrive\Documents\GitHub\Headstarter-Project-2\weather-app\src\Img\WeatherCloudy.jpg);
+  min-height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size:100%;
+  scale: 1;
 }
 
 .widgets {
@@ -17,6 +22,16 @@
   padding: 10px;
   box-sizing: border-box;
   margin: 10px;
+}
+.text{
+  padding-left: 30%;
+}
+.search{
+  padding-left: 40%;
+}
+.background{
+  background-image: url(https://www.onlygfx.com/wp-content/uploads/2021/07/cartoon-cloud-sky-background-1-cover.jpg);
+  background-size: cover;
 }
 
 input[type='text'] {
