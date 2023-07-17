@@ -7,10 +7,11 @@ const WeatherWidget = ({ city }) => {
     const fetchWeatherData = async () => {
       try {
         const response = await fetch(
-          `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=e7fc081df850c97f252bf1c3af358d51&units=metric`
+          `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=YOUR_API_KEY&units=metric`
         );
         const data = await response.json();
-        setWeatherData(data.list.slice(0, 7)); // Limit the forecast to 7 days
+        const uniqueDates = getUniqueDates(data.list);
+        setWeatherData(uniqueDates);
       } catch (error) {
         console.error('Error fetching weather data:', error);
       }
@@ -21,14 +22,30 @@ const WeatherWidget = ({ city }) => {
     }
   }, [city]);
 
+  const getUniqueDates = (weatherList) => {
+    const uniqueDates = [];
+    const datesSet = new Set();
+
+    for (const entry of weatherList) {
+      const date = new Date(entry.dt * 1000).toDateString();
+
+      if (!datesSet.has(date)) {
+        uniqueDates.push(entry);
+        datesSet.add(date);
+      }
+    }
+
+    return uniqueDates;
+  };
+
   return (
     <div className="widget">
       <h2>Weather in {city}</h2>
-      {weatherData.map((forecast) => (
-        <div key={forecast.dt}>
-          <p>Date: {new Date(forecast.dt * 1000).toDateString()}</p>
-          <p>Temperature: {forecast.main.temp} °C</p>
-          <p>Weather: {forecast.weather[0].description}</p>
+      {weatherData.map((entry) => (
+        <div key={entry.dt}>
+          <p>Date: {new Date(entry.dt * 1000).toDateString()}</p>
+          <p>Temperature: {entry.main.temp} °C</p>
+          <p>Weather: {entry.weather[0].description}</p>
         </div>
       ))}
     </div>
@@ -36,4 +53,3 @@ const WeatherWidget = ({ city }) => {
 };
 
 export default WeatherWidget;
-
