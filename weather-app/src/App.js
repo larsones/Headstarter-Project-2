@@ -17,24 +17,24 @@ const App = () => {
   };
 
   useEffect(() => {
-    // Fetch news data when the city changes
-    const fetchNewsData = async () => {
-      try {
-        const response = await fetch(
-          `https://newsapi.org/v2/everything?q=${city}&sortBy=publishedAt&apiKey=${1341a5014eae407c91aad0743e24edcd}&pageSize=5`
-        );
-        const data = await response.json();
-        setNewsData(data.articles);
-      } catch (error) {
-        console.error('Error fetching news data:', error);
-      }
-    };
-
-    if (city) {
-      fetchNewsData();
+  // Fetch news data when the city changes
+  const fetchNewsData = async () => {
+    try {
+      const response = await fetch(
+        `https://newsapi.org/v2/everything?q=${city}&sortBy=publishedAt&apiKey=1341a5014eae407c91aad0743e24edcd&pageSize=5`
+      );
+      const data = await response.json();
+      setNewsData(data.articles);
+    } catch (error) {
+      console.error('Error fetching news data:', error);
     }
-  }, [city, apiKey]);
+  };
 
+  if (city) {
+    fetchNewsData();
+  }
+}, [city]);
+  
   return (
     <div className="App">
       <h1 className="text">
