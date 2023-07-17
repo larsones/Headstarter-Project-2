@@ -17,24 +17,39 @@ const App = () => {
   };
 
   useEffect(() => {
-  // Fetch news data when the city changes
-  const fetchNewsData = async () => {
-    try {
-      const response = await fetch(
-        `https://newsapi.org/v2/everything?q=${city}&sortBy=publishedAt&apiKey=1341a5014eae407c91aad0743e24edcd&pageSize=5`
-      );
-    const data = await response.json();
-    setNewsData(data.articles.slice(0, 5)); // Limit the articles to 5
-  } catch (error) {
-    console.log(error);
-  }
-}
+    // Fetch news data when the city changes
+    const fetchNewsData = async () => {
+      try {
+        const response = await fetch(
+          `https://newsapi.org/v2/everything?q=${city}&sortBy=publishedAt&apiKey=YOUR_API_KEY&pageSize=100`
+        );
+        const data = await response.json();
+        const uniqueArticles = getUniqueArticles(data.articles.slice(0, 100));
+        setNewsData(uniqueArticles.slice(0, 5)); // Limit the articles to 5
+      } catch (error) {
+        console.log(error);
+      }
+    };
 
-  if (city) {
-    fetchNewsData();
+    if (city) {
+      fetchNewsData();
+    }
+  }, [city]);
+
+  function getUniqueArticles(articles) {
+    const uniqueArticles = [];
+    const articleUrls = new Set();
+
+    for (const article of articles) {
+      if (!articleUrls.has(article.url)) {
+        uniqueArticles.push(article);
+        articleUrls.add(article.url);
+      }
+    }
+
+    return uniqueArticles;
   }
-}, [city]);
-  
+
   return (
     <div className="App">
       <h1 className="text">
@@ -48,7 +63,7 @@ const App = () => {
         <AirQuality city={city} />
       </div>
       <div className="newsWidget">
-      <h1>    News    </h1>
+        <h1>News</h1>
         {newsData.map((article) => (
           <div key={article.title} className="article">
             <img src={article.urlToImage} alt={article.title} />
