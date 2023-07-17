@@ -4,12 +4,10 @@
  }
 .App {
   background-image: url(Img/WeatherCloudy.jpg);
-  background-position: 0%;
-  min-height: 100vh;
-
+  background-position: center;
   background-repeat: no-repeat;
-  background-size:120%;
-  scale: 1;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 .widgets {
