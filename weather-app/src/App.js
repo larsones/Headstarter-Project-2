@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import SearchBar from './SearchBar';
 import WeatherWidget from './WeatherWidget';
 import HourlyForecast from './HourlyForecast';
