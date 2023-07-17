@@ -21,7 +21,7 @@
 
 .widget {
   width: 300px;
-  height: 600px;
+  min-height: 600px;
   border-radius: 20px;
   background-color: #eee;
   padding: 10px;
