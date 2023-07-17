@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import SearchBar from './SearchBar';
 import WeatherWidget from './WeatherWidget';
 import HourlyForecast from './HourlyForecast';
@@ -9,21 +8,8 @@ import './App.css';
 
 const App = () => {
   const [city, setCity] = useState('');
-  const [weatherData, setWeatherData] = useState(null);
-  const [error, setError] = useState(null);
 
-  const handleCitySearch = async (cityName) => {
-    try {
-      const response = await axios.get(
-        `https://api.weatherapi.com/v1/current.json?key=bbea61d37db924452af9aec9cde074c1
-&q=${cityName}`
-      );
-      setWeatherData(response.data);
-      setError(null);
-    } catch (error) {
-      setError('Failed to fetch weather data');
-      setWeatherData(null);
-    }
+  const handleCitySearch = (cityName) => {
     setCity(cityName);
   };
 
