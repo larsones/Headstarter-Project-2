@@ -21,7 +21,7 @@ const App = () => {
     const fetchNewsData = async () => {
       try {
         const response = await fetch(
-          `https://newsapi.org/v2/everything?q=${city}&sortBy=publishedAt&apiKey=${apiKey}&pageSize=5`
+          `https://newsapi.org/v2/everything?q=${city}&sortBy=publishedAt&apiKey=${1341a5014eae407c91aad0743e24edcd}&pageSize=5`
         );
         const data = await response.json();
         setNewsData(data.articles);
