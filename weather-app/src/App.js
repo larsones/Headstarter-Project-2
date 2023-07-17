@@ -24,6 +24,9 @@ const App = () => {
         <WeeklyForecast city={city} />
         <AirQuality city={city} />
       </div>
+      <div className='newsWidget'>
+        
+      </div>
     </div>
   );
 }

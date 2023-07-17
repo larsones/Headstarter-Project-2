@@ -28,6 +28,16 @@
   box-sizing: border-box;
   margin: 10px;
 }
+
+.newsWidget{
+  width: 400px;
+  height: 300px;
+  border-radius: 20px;
+  background-color: #eee;
+  padding: 10px;
+  box-sizing: border-box;
+  margin: 10px;
+}
 .text{
   padding-left: 30%;
 }
