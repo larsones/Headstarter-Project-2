@@ -7,7 +7,7 @@ const WeatherWidget = ({ city }) => {
     const fetchWeatherData = async () => {
       try {
         const response = await fetch(
-          `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=YOUR_API_KEY&units=metric`
+          `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=e7fc081df850c97f252bf1c3af358d51&units=metric`
         );
         const data = await response.json();
         setWeatherData(data.list.slice(0, 7)); // Limit the forecast to 7 days
