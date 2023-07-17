@@ -9,4 +9,5 @@ const WeatherWidget = ({ city }) => {
   );
 }
 
+
 export default WeatherWidget;

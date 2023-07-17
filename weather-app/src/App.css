@@ -3,7 +3,7 @@
   padding: 0;
  }
 .App {
-  background-image: url(C:\Users\elars\OneDrive\Documents\GitHub\Headstarter-Project-2\weather-app\src\Img\WeatherCloudy.jpg);
+  background-image: url(Img/WeatherCloudy.jpg);
   background-position: 0%;
   min-height: 100vh;
 
@@ -42,7 +42,11 @@
   padding-left: 30%;
 }
 .search{
-  padding-left: 40%;
+  padding: 10px;
+  width: 80%;
+  margin: auto;
+  border: 2px solid lightgray;
+  border-radius: 6px;
 }
 
 
