@@ -8,7 +8,7 @@ import './App.css';
 
 const App = () => {
   const [city, setCity] = useState('');
-  const apiKey = 'YOUR_API_KEY';
+  const apiKey = 'e7fc081df850c97f252bf1c3af358d51';
   const [weatherData, setWeatherData] = useState([{}]);
   const [newsData, setNewsData] = useState([]);
 
