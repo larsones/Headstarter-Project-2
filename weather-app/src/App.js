@@ -8,6 +8,7 @@ import './App.css';
 
 const App = () => {
   const [city, setCity] = useState('');
+  const [newsData, setNewsData] = useState([]);
 
   const handleCitySearch = (cityName) => {
     setCity(cityName);
