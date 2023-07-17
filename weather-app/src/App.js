@@ -48,7 +48,7 @@ const App = () => {
         <AirQuality city={city} />
       </div>
       <div className="newsWidget">
-      <h2 {text-align: center;}> News </h2>
+      <h2>    News    </h2>
         {newsData.map((article) => (
           <div key={article.title} className="article">
             <img src={article.urlToImage} alt={article.title} />
