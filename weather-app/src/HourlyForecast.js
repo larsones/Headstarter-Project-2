@@ -11,8 +11,8 @@ const HourlyForecast = ({ city }) => {
         );
         const data = await response.json();
         const transformedData = data.list.map((hour) => ({
-          time: hour.dt_txt,
-          temperature: hour.main.temp,
+          time: formatTime(hour.dt_txt),
+          temperature: convertKelvinToCelsius(hour.main.temp),
           weather: hour.weather[0].description,
         }));
         setHourlyForecast(transformedData);
@@ -25,6 +25,16 @@ const HourlyForecast = ({ city }) => {
       fetchHourlyForecastData();
     }
   }, [city]);
+
+  const formatTime = (timeString) => {
+    const options = { hour: 'numeric', minute: '2-digit', hour12: true };
+    const time = new Date(timeString).toLocaleTimeString([], options);
+    return time;
+  };
+
+  const convertKelvinToCelsius = (temperature) => {
+    return Math.round(temperature - 273.15);
+  };
 
   return (
     <div className="widget">
@@ -41,4 +51,3 @@ const HourlyForecast = ({ city }) => {
 };
 
 export default HourlyForecast;
-
