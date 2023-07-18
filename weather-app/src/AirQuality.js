@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Line } from 'react-chartjs-2';
-import Chart from 'chart.js';
 
 const AirQualityGraph = ({ city }) => {
   const [latitude, setLatitude] = useState(null);
@@ -74,27 +73,6 @@ const AirQualityGraph = ({ city }) => {
       ],
     };
   };
-
-  useEffect(() => {
-    // Register the custom plugin to display data labels on the chart
-    Chart.plugins.register({
-      afterDatasetsDraw: function (chart) {
-        const { ctx } = chart;
-        ctx.font = Chart.helpers.fontString(14, 'normal', Chart.defaults.global.defaultFontFamily);
-        ctx.fillStyle = 'black';
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'bottom';
-
-        chart.data.datasets.forEach((dataset, i) => {
-          const meta = chart.getDatasetMeta(i);
-          meta.data.forEach((bar, index) => {
-            const data = dataset.data[index];
-            ctx.fillText(data, bar._model.x, bar._model.y - 5);
-          });
-        });
-      },
-    });
-  }, []);
 
   return (
     <div className="widget">
