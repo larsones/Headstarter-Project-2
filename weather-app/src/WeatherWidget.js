@@ -43,8 +43,8 @@ const WeatherWidget = ({ city }) => {
       <h2>Weather in {city}</h2>
       {weatherData.map((entry) => (
         <div key={entry.dt}>
-          <p>Date: {new Date(entry.dt * 1000).toDateString()}</p>
-          <p>Temperature: {entry.main.temp} °C</p>
+          <p><b>Date:</b> <u>{new Date(entry.dt * 1000).toDateString()}</u></p>
+          <p>Temperature: {(Math.round(entry.main.temp*9/5)+32)} °F</p>
           <p>Weather: {entry.weather[0].description}</p>
         </div>
       ))}

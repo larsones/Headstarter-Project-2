@@ -8,6 +8,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
+  min-height: 100%;
 }
 
 
@@ -18,10 +19,16 @@
   margin-top: 20px;
 }
 
+.widget h2{
+  text-align: center;
+  text-decoration: underline;
+}
+
 
 .widget {
   width: 300px;
   min-height: 500px;
+  height: fit-content;
   border-radius: 20px;
   background-color: #eee;
   padding: 10px;
@@ -31,8 +38,12 @@
 
 
 .newsWidget{
+  justify-content: center;
+  align-items: center;
   width: 400px;
-  height: 2100px;
+  min-height: 1000px;
+  height: fit-content;
+  padding-left: 50%;
   border-radius: 20px;
   background-color: #eee;
   padding: 10px;
@@ -43,6 +54,8 @@
 
 .article {
   display: flex;
+  flex-wrap: wrap;
+  background: scroll;
   flex-direction: column;
   align-items: center;
   margin-bottom: 20px;
@@ -59,7 +72,7 @@
 
 .article h2 {
   margin-top: 10px;
-  font-size: 18px;
+  font-size: 28px;
   text-align: center;
 }
 
@@ -67,6 +80,7 @@
 .article p {
   margin-top: 10px;
   text-align: center;
+  margin-bottom: auto;
 }
 
 
@@ -74,28 +88,28 @@
   display: inline-block;
   margin-top: 10px;
   text-align: center;
-  color: #333;
+  color: rgb(0, 16, 243);
   text-decoration: none;
   font-weight: bold;
 }
 
 
 .article a:hover {
-  color: #000;
+  color: rgb(3, 137, 181);
 }
 
 
 .text{
   padding-left: 30%;
 }
-.search{
-  padding: 10px;
-  width: 80%;
+.searchBar{
+  align-self: center;
+  width: max-content;
   margin: auto;
-  border: 2px solid lightgray;
-  border-radius: 6px;
 }
-
+.newsTitle{
+  text-align: center;
+}
 
 
 

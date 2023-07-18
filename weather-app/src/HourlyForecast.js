@@ -41,8 +41,8 @@ const HourlyForecast = ({ city }) => {
       <h2>Hourly Forecast in {city}</h2>
       {hourlyForecast.map((hour) => (
         <div key={hour.time} className="hour">
-          <p>Time: {hour.time}</p>
-          <p>Temperature: {hour.temperature} °C</p>
+          <p><b>Time:</b> <u>{hour.time}</u></p>
+          <p>Temperature: {(Math.round(hour.temperature*9/5)+32)} °F</p>
           <p>Weather: {hour.weather}</p>
           <p></p>
         </div>

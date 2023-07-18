@@ -75,8 +75,8 @@ const WeeklyForecast = ({ city }) => {
       <h2>Weekly Forecast in {city}</h2>
       {weeklyForecast.map((day) => (
         <div key={day.date} className="day">
-          <p>Date: {day.date}</p>
-          <p>Temperature: {day.temperature} °C</p>
+          <p><b>Date:</b> <u>{day.date}</u></p>
+          <p>Temperature: {(Math.round(day.temperature*9/5)+32)} °F</p>
           <p>Weather: {day.weather}</p>
         </div>
       ))}
