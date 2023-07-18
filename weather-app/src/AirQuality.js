@@ -12,7 +12,7 @@ const AirQuality = ({ city }) => {
         const geocodingResponse = await axios.get(
           `https://api.opencagedata.com/geocode/v1/json?q=${encodeURIComponent(
             city
-          )}&key=YOUR_OPENCAGE_API_KEY`
+          )}&key=5e96988d62de4b52aadbf5c51a1b8bef`
         );
         const geocodingData = geocodingResponse.data;
         if (geocodingData.results.length > 0) {
