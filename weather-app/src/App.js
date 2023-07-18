@@ -48,7 +48,7 @@ const App = () => {
       </div>
       <div className='newsWidgets'>
         <div className="newsWidget">
-          <h1 className='newsTitle'>    News    </h1>
+          <h1 className='newsTitle'>    <u>News</u>    </h1>
           {newsData.map((article) => (
             <div key={article.title} className="article">
               <img src={article.urlToImage} alt={article.title} />
