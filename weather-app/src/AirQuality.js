@@ -9,7 +9,7 @@ const AirQuality = ({ city }) => {
         const response = await fetch(
           `http://api.openweathermap.org/data/2.5/air_pollution/history?lat=${encodeURIComponent(
             city.latitude
-          )}&lon=${encodeURIComponent(city.longitude)}&start=${encodeURIComponent(city.start)}&end=${encodeURIComponent(city.end)}&appid=bbea61d37db924452af9aec9cde074c1`
+          )}&lon=${encodeURIComponent(city.longitude)}&start=${encodeURIComponent(city.start)}&end=${encodeURIComponent(city.end)}&appid=e7fc081df850c97f252bf1c3af358d51`
         );
         const data = await response.json();
         setAirQualityData(data);
