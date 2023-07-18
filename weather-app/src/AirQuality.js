@@ -7,7 +7,9 @@ const AirQuality = ({ city }) => {
     const fetchAirQualityData = async () => {
       try {
         const response = await fetch(
-          `http://api.openweathermap.org/data/2.5/air_pollution/forecast?appid=e7fc081df850c97f252bf1c3af358d51&q=${encodeURIComponent(city)}`
+          `http://api.openweathermap.org/data/2.5/air_pollution/forecast?appid=e7fc081df850c97f252bf1c3af358d51&q=${encodeURIComponent(
+            city
+          )}`
         );
         const data = await response.json();
         setAirQualityData(data);
@@ -28,8 +30,8 @@ const AirQuality = ({ city }) => {
   };
 
   const renderAirQuality = () => {
-    if (!airQualityData || !airQualityData.list) {
-      return <p>No air quality data available</p>;
+    if (!airQualityData || !airQualityData.list || airQualityData.list.length === 0) {
+      return <p>No air quality data available for {city}</p>;
     }
 
     return airQualityData.list.map((entry) => (
@@ -49,4 +51,3 @@ const AirQuality = ({ city }) => {
 };
 
 export default AirQuality;
-
