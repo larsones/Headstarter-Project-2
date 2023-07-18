@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 const AirQuality = ({ city }) => {
   const [latitude, setLatitude] = useState(null);
@@ -8,12 +9,12 @@ const AirQuality = ({ city }) => {
   useEffect(() => {
     const fetchCoordinates = async () => {
       try {
-        const geocodingResponse = await fetch(
+        const geocodingResponse = await axios.get(
           `https://api.opencagedata.com/geocode/v1/json?q=${encodeURIComponent(
             city
-          )}&key=5e96988d62de4b52aadbf5c51a1b8bef`
+          )}&key=YOUR_OPENCAGE_API_KEY`
         );
-        const geocodingData = await geocodingResponse.json();
+        const geocodingData = geocodingResponse.data;
         if (geocodingData.results.length > 0) {
           const { lat, lng } = geocodingData.results[0].geometry;
           setLatitude(lat);
@@ -33,10 +34,10 @@ const AirQuality = ({ city }) => {
     const fetchAirQualityData = async () => {
       try {
         if (latitude && longitude) {
-          const airVisualResponse = await fetch(
+          const airVisualResponse = await axios.get(
             `https://api.airvisual.com/v2/nearest_city?lat=${latitude}&lon=${longitude}&key=7e56aae3-f67b-438f-9c06-b5aba522e089`
           );
-          const airVisualData = await airVisualResponse.json();
+          const airVisualData = airVisualResponse.data;
           setAirQualityData(airVisualData);
         }
       } catch (error) {
@@ -54,7 +55,7 @@ const AirQuality = ({ city }) => {
       <h2>Air Quality in {city}</h2>
       {airQualityData && airQualityData.status === 'success' ? (
         <div>
-          <p>PM2.5: {airQualityData.data.current.pollution.pm25}</p>
+          <p>PM2.5: {airQualityData.data.current.pollution.pm2_5}</p>
           <p>PM10: {airQualityData.data.current.pollution.pm10}</p>
           <p>O3: {airQualityData.data.current.pollution.o3}</p>
           <p>NO2: {airQualityData.data.current.pollution.no2}</p>
