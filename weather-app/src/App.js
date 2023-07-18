@@ -46,18 +46,20 @@ const App = () => {
         <WeeklyForecast city={city} />
         <AirQuality city={city} />
       </div>
-      <div className="newsWidget">
-        <h1 className='newsTitle'>    News    </h1>
-        {newsData.map((article) => (
-          <div key={article.title} className="article">
-            <img src={article.urlToImage} alt={article.title} />
-            <h2>{article.title}</h2>
-            <p>{article.description}</p>
-            <a href={article.url} target="_blank" rel="noopener noreferrer">
-              Click Here to Read More
-            </a>
-          </div>
-        ))}
+      <div className='newsWidgets'>
+        <div className="newsWidget">
+          <h1 className='newsTitle'>    News    </h1>
+          {newsData.map((article) => (
+            <div key={article.title} className="article">
+              <img src={article.urlToImage} alt={article.title} />
+              <h2>{article.title}</h2>
+              <p>{article.description}</p>
+              <a href={article.url} target="_blank" rel="noopener noreferrer">
+                Click Here to Read More
+              </a>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

@@ -36,7 +36,11 @@
   margin: 10px;
 }
 
-
+.newsWidgets{
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
 .newsWidget{
   justify-content: center;
   align-items: center;
