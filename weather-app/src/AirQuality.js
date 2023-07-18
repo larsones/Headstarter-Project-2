@@ -33,7 +33,7 @@ const AirQualityGraph = ({ city }) => {
       try {
         if (latitude && longitude) {
           const response = await fetch(
-            `http://api.openweathermap.org/data/2.5/air_pollution/forecast?lat=${latitude}&lon=${longitude}&appid=YOUR_OPENWEATHERMAP_API_KEY`
+            `http://api.openweathermap.org/data/2.5/air_pollution/forecast?lat=${latitude}&lon=${longitude}&appid=e7fc081df850c97f252bf1c3af358d51`
           );
           const data = await response.json();
           setAirQualityData(data);
@@ -77,7 +77,7 @@ const AirQualityGraph = ({ city }) => {
   return (
     <div className="widget">
       <h2>Air Quality Graph for {city}</h2>
-      {airQualityData ? (
+      {airQualityData && airQualityData.list ? (
         <Line data={generateGraphData()} />
       ) : (
         <p>No air quality data available</p>
