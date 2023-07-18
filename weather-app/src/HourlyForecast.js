@@ -44,6 +44,7 @@ const HourlyForecast = ({ city }) => {
           <p>Time: {hour.time}</p>
           <p>Temperature: {hour.temperature} °C</p>
           <p>Weather: {hour.weather}</p>
+          <p></p>
         </div>
       ))}
     </div>
