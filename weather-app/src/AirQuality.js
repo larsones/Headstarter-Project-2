@@ -7,7 +7,9 @@ const AirQuality = ({ city }) => {
     const fetchAirQualityData = async () => {
       try {
         const response = await fetch(
-          `https://api.openaq.org/v2/latest?country_id=US&city=${encodeURIComponent(city)}&parameter=pm25`
+          `http://api.openweathermap.org/data/2.5/air_pollution/history?lat=${encodeURIComponent(
+            city.lat
+          )}&lon=${encodeURIComponent(city.lon)}&start=${encodeURIComponent(city.start)}&end=${encodeURIComponent(city.end)}&appid=bbea61d37db924452af9aec9cde074c1`
         );
         const data = await response.json();
         setAirQualityData(data);
@@ -23,14 +25,13 @@ const AirQuality = ({ city }) => {
 
   return (
     <div className="widget">
-      <h2>Air Quality in {city}</h2>
-      {airQualityData && airQualityData.results && airQualityData.results.length > 0 ? (
+      <h2>Air Quality in {city.name}</h2>
+      {airQualityData ? (
         <div>
-          <p>PM2.5: {airQualityData.results[0].measurements[0].value} {airQualityData.results[0].measurements[0].unit}</p>
-          <p>Last Updated: {airQualityData.results[0].measurements[0].lastUpdated}</p>
+          <p>Data: {JSON.stringify(airQualityData)}</p>
         </div>
       ) : (
-        <p>No air quality data available for {city}.</p>
+        <p>No air quality data available for {city.name}.</p>
       )}
     </div>
   );
