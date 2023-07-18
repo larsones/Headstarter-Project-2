@@ -7,7 +7,7 @@ const AirQuality = ({ city }) => {
     const fetchAirQualityData = async () => {
       try {
         const response = await fetch(
-          `http://api.openweathermap.org/data/2.5/air_pollution?lat={lat}&lon={lon}&appid={e7fc081df850c97f252bf1c3af358d51}`
+          `http://api.openweathermap.org/data/2.5/air_pollution/forecast?lat=50&lon=50&appid={e7fc081df850c97f252bf1c3af358d51}`
         );
         const data = await response.json();
         setAirQualityData(data);
@@ -26,9 +26,9 @@ const AirQuality = ({ city }) => {
       <h2>Air Quality in {city}</h2>
       {airQualityData ? (
         <div>
-          <p>Index: {airQualityData.index}</p>
-          <p>Level: {airQualityData.level}</p>
-          <p>Description: {airQualityData.description}</p>
+          <p>Index: {airQualityData.list[0].main.aqi}</p>
+          <p>Level: {airQualityData.list[0].components.co}</p>
+          <p>Description: {airQualityData.list[0].components.no2}</p>
         </div>
       ) : (
         <p>No air quality data available</p>
