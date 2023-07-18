@@ -24,7 +24,7 @@ const AirQuality = ({ city }) => {
   return (
     <div className="widget">
       <h2>Air Quality in {city}</h2>
-      {airQualityData && airQualityData.results ? (
+      {airQualityData && airQualityData.results && airQualityData.results.length > 0 ? (
         <div>
           <p>PM2.5: {airQualityData.results[0].measurements[0].value} {airQualityData.results[0].measurements[0].unit}</p>
           <p>Last Updated: {airQualityData.results[0].measurements[0].lastUpdated}</p>
