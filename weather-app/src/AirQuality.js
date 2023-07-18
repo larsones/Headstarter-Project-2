@@ -11,6 +11,7 @@ const AirQuality = ({ latitude, longitude }) => {
           `https://api.openaq.org/v1/measurements?coordinates=${latitude},${longitude}&parameter[]=pm10&parameter[]=pm2.5&parameter[]=no2&parameter[]=co&parameter[]=so2&parameter[]=o3&limit=1`
         );
         const data = response.data;
+        console.log('API response:', data);
         setAirQualityData(data);
       } catch (error) {
         console.error('Error fetching air quality data:', error);
