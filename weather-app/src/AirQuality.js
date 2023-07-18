@@ -18,7 +18,7 @@ const AirQuality = ({ city }) => {
       }
     };
 
-    if (city) {
+    if (city.latitude && city.longitude && city.start && city.end) {
       fetchAirQualityData();
     }
   }, [city]);
