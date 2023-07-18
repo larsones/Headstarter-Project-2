@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const AirQuality = ({ latitude, longitude }) => {
+const AirQuality = ({ city }) => {
   const [airQualityData, setAirQualityData] = useState(null);
 
   useEffect(() => {
     const fetchAirQualityData = async () => {
       try {
         const response = await axios.get(
-          `https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${latitude}&longitude=${longitude}&hourly=pm10,pm2_5,dust,uv_index,us_aqi`
+          `https://api.airvisual.com/v2/city?city=${encodeURIComponent(city)}&key=7e56aae3-f67b-438f-9c06-b5aba522e089`
         );
         const data = response.data;
         console.log('API response:', data);
@@ -19,18 +19,15 @@ const AirQuality = ({ latitude, longitude }) => {
     };
 
     fetchAirQualityData();
-  }, [latitude, longitude]);
+  }, [city]);
 
   return (
     <div className="widget">
-      <h2>Air Quality</h2>
-      {airQualityData && airQualityData.hourly ? (
+      <h2>Air Quality in {city}</h2>
+      {airQualityData ? (
         <div>
-          <p>PM10: {airQualityData.hourly.pm10}</p>
-          <p>PM2.5: {airQualityData.hourly.pm2_5}</p>
-          <p>Dust: {airQualityData.hourly.dust}</p>
-          <p>UV Index: {airQualityData.hourly.uv_index}</p>
-          <p>US AQI: {airQualityData.hourly.us_aqi}</p>
+          <p>Current Air Quality Index: {airQualityData.data.current.pollution.aqius}</p>
+          <p>Main Pollutant: {airQualityData.data.current.pollution.mainus}</p>
         </div>
       ) : (
         <p>No air quality data available.</p>
@@ -40,3 +37,4 @@ const AirQuality = ({ latitude, longitude }) => {
 };
 
 export default AirQuality;
+
