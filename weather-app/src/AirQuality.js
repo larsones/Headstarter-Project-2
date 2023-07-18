@@ -8,7 +8,7 @@ const AirQuality = ({ latitude, longitude }) => {
     const fetchAirQualityData = async () => {
       try {
         const response = await axios.get(
-          `https://api.openaq.org/v1/measurements?coordinates=${latitude},${longitude}&parameter[]=pm10&parameter[]=pm2.5&parameter[]=no2&parameter[]=co&parameter[]=so2&parameter[]=o3&limit=1`
+          `https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${latitude}&longitude=${longitude}&hourly=pm10,pm2_5,dust,uv_index,us_aqi`
         );
         const data = response.data;
         console.log('API response:', data);
@@ -24,14 +24,13 @@ const AirQuality = ({ latitude, longitude }) => {
   return (
     <div className="widget">
       <h2>Air Quality</h2>
-      {airQualityData && airQualityData.results.length > 0 ? (
+      {airQualityData && airQualityData.hourly ? (
         <div>
-          <p>PM10: {airQualityData.results[0].measurements.find(m => m.parameter === 'pm10').value}</p>
-          <p>PM2.5: {airQualityData.results[0].measurements.find(m => m.parameter === 'pm2.5').value}</p>
-          <p>NO2: {airQualityData.results[0].measurements.find(m => m.parameter === 'no2').value}</p>
-          <p>CO: {airQualityData.results[0].measurements.find(m => m.parameter === 'co').value}</p>
-          <p>SO2: {airQualityData.results[0].measurements.find(m => m.parameter === 'so2').value}</p>
-          <p>O3: {airQualityData.results[0].measurements.find(m => m.parameter === 'o3').value}</p>
+          <p>PM10: {airQualityData.hourly.pm10}</p>
+          <p>PM2.5: {airQualityData.hourly.pm2_5}</p>
+          <p>Dust: {airQualityData.hourly.dust}</p>
+          <p>UV Index: {airQualityData.hourly.uv_index}</p>
+          <p>US AQI: {airQualityData.hourly.us_aqi}</p>
         </div>
       ) : (
         <p>No air quality data available.</p>
