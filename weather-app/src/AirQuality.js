@@ -7,9 +7,9 @@ const AirQuality = ({ city }) => {
     const fetchAirQualityData = async () => {
       try {
         const response = await fetch(
-          `https://api.airvisual.com/v2/city?city=${encodeURIComponent(
+          `https://api.openaq.org/v1/measurements?country_id=US&city=${encodeURIComponent(
             city
-          )}&state=&country=USA&key=7e56aae3-f67b-438f-9c06-b5aba522e089`
+          )}&limit=1&parameter=pm25&sort=desc`
         );
         const data = await response.json();
         setAirQualityData(data);
@@ -24,17 +24,15 @@ const AirQuality = ({ city }) => {
   }, [city]);
 
   const renderAirQuality = () => {
-    if (!airQualityData || airQualityData.status !== 'success') {
+    if (!airQualityData || airQualityData.results.length === 0) {
       return <p>No air quality data available for {city}</p>;
     }
 
-    const { current } = airQualityData.data;
+    const { value, unit, date } = airQualityData.results[0];
     return (
       <div className="air-quality-entry">
-        <p>Air Quality Index (AQI): {current.pollution.aqius}</p>
-        <p>Temperature: {current.weather.tp}°C</p>
-        <p>Humidity: {current.weather.hu}%</p>
-        <p>Wind: {current.weather.ws} m/s</p>
+        <p>PM2.5: {value} {unit}</p>
+        <p>Last Updated: {date.local}</p>
       </div>
     );
   };
