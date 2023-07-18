@@ -74,25 +74,26 @@ const AirQualityGraph = ({ city }) => {
     };
   };
 
-  return (
-    <div className="widget">
-      <h2>Air Quality Graph for {city}</h2>
-      {airQualityData && airQualityData.list ? (
-        <Line
-          data={generateGraphData()}
-          options={{
-            scales: {
-              y: {
-                beginAtZero: true,
-              },
+return (
+  <div className="widget">
+    <h2>Air Quality Graph for {city}</h2>
+    {airQualityData && airQualityData.list ? (
+      <Line
+        data={generateGraphData()}
+        options={{
+          scales: {
+            y: {
+              beginAtZero: true,
             },
-          }}
-        />
-      ) : (
-        <p>No air quality data available</p>
-      )}
-    </div>
-  );
+          },
+        }}
+      />
+    ) : (
+      <p>No air quality data available</p>
+    )}
+  </div>
+);
+
 };
 
 export default AirQualityGraph;
