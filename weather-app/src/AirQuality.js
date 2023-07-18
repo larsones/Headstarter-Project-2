@@ -7,9 +7,9 @@ const AirQuality = ({ city }) => {
     const fetchAirQualityData = async () => {
       try {
         const response = await fetch(
-          `http://api.openweathermap.org/data/2.5/air_pollution/forecast?appid=e7fc081df850c97f252bf1c3af358d51&q=${encodeURIComponent(
+          `https://api.airvisual.com/v2/city?city=${encodeURIComponent(
             city
-          )}`
+          )}&state=&country=USA&key=7e56aae3-f67b-438f-9c06-b5aba522e089`
         );
         const data = await response.json();
         setAirQualityData(data);
@@ -23,23 +23,20 @@ const AirQuality = ({ city }) => {
     }
   }, [city]);
 
-  const formatTimestamp = (timestamp) => {
-    const date = new Date(timestamp * 1000);
-    const options = { weekday: 'long', month: 'long', day: 'numeric' };
-    return date.toLocaleDateString(undefined, options);
-  };
-
   const renderAirQuality = () => {
-    if (!airQualityData || !airQualityData.list || airQualityData.list.length === 0) {
+    if (!airQualityData || airQualityData.status !== 'success') {
       return <p>No air quality data available for {city}</p>;
     }
 
-    return airQualityData.list.map((entry) => (
-      <div key={entry.dt} className="air-quality-entry">
-        <p>{formatTimestamp(entry.dt)}</p>
-        <p>Air Quality Index (AQI): {entry.main.aqi}</p>
+    const { current } = airQualityData.data;
+    return (
+      <div className="air-quality-entry">
+        <p>Air Quality Index (AQI): {current.pollution.aqius}</p>
+        <p>Temperature: {current.weather.tp}°C</p>
+        <p>Humidity: {current.weather.hu}%</p>
+        <p>Wind: {current.weather.ws} m/s</p>
       </div>
-    ));
+    );
   };
 
   return (
